@@ -227,7 +227,7 @@ useEffect(() => {
         rel="noopener noreferrer"
       >
         Environnement et Changement climatique Canada
-      </a>. Les données en Fahrenheit ont été généré à l'aide de l'AA et peuvent contenir des erreurs.
+      </a>. Les données en Fahrenheit ont été généré à l'aide de l'IA et peuvent contenir des erreurs.
     </>
   ) : (
     <>
