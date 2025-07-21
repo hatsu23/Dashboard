@@ -20,6 +20,7 @@ function Dashboard({ lang }) {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
   const [unit, setUnit] = useState('C');
+  const [activeTab, setActiveTab] = useState('graph');
 
 
   const data = [
@@ -203,6 +204,45 @@ useEffect(() => {
   return (
     
     <div className="dashboard">
+      <div style={{
+  maxWidth: '800px',
+  margin: '40px auto',
+  padding: '20px',
+  backgroundColor: '#f5f5f5',
+  borderRadius: '8px',
+  fontSize: '16px',
+  lineHeight: '1.6'
+}}>
+ <h2 style={{ marginTop: 0 }}>
+  {lang === 'fr' ? 'Tableau de bord climatique du Canada' : 'Canada Climate Dashboard'}
+</h2>
+
+<p>
+  {lang === 'fr' ? (
+    <>
+      Les données en Celsius proviennent de{' '}
+      <a
+        href="https://www.canada.ca/fr/environnement-changement-climatique/services/indicateurs-environnementaux/changements-temperature.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Environnement et Changement climatique Canada
+      </a>. Les données en Fahrenheit ont été généré à l'aide de l'AA et peuvent contenir des erreurs.
+    </>
+  ) : (
+    <>
+      The data in Celsius comes from{' '}
+      <a
+        href="https://www.canada.ca/en/environment-climate-change/services/environmental-indicators/temperature-change.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Environment and Climate Change Canada
+      </a>. The data in Fahrenheit was generated with the help of AI and may contain mistakes.
+    </>
+  )}
+</p>
+</div>
         <div style={{ textAlign: 'center', marginBottom: '20px' }}>
     <button onClick={() => setUnit(unit === 'C' ? 'F' : 'C')} style={{
       backgroundColor: '#d32f2f',
@@ -215,6 +255,7 @@ useEffect(() => {
       {lang === 'fr'
         ? (unit === 'C' ? 'Afficher en Fahrenheit (°F)' : 'Afficher en Celsius (°C)')
         : (unit === 'C' ? 'Show in Fahrenheit (°F)' : 'Show in Celsius (°C)')}
+      
     </button>
   </div>
       <canvas ref={chartRef}></canvas>
